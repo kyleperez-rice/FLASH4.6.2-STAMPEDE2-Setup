@@ -1,0 +1,38 @@
+How to set up FLASH4.6.2 on STAMPEDE2
+
+1: Get the FLASH4.6.2.tar.gz file
+
+2: unpack with
+	tar -xzf FLASH4.6.2.tar.gz
+	
+3: Enter the FLASH4.6.2 directory
+	cd FLASH4.6.2
+	
+4: Run the setup script
+	./setup Sedov -auto
+
+5: Enter the object directory
+	cd object
+	
+6: Remove the Makefile.h and replace it with attached Makefile.h
+	[in FLASH4.6.2/object]: rm Makefile.h
+	[in directory where replacement Makefile.h is stored]: mv Makefile.h $HOME/FLASH4.6.2/object
+	
+7: Run the .sh file that loads the modules for making flash4
+	[in directory where module.sh is stored]: source module.sh
+	! If successful, the system should tell you that some modules have been loaded
+
+8: Reenter the FLASH4.6.2/object directory
+	cd
+	cd FLASH4.6.2/object
+	
+9: Make the executable
+	make
+	! The process should take a few minutes
+	
+10: Verify that the executable is present
+	[in FLASH4.6.2/object]: ls
+	! Verify that flash4 is present	
+
+11: Create a copy of the executable to avoid repeating the process
+	cp flash4 $HOME
